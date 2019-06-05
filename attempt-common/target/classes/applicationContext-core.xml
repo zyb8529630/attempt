@@ -43,6 +43,10 @@
     
     <!-- 用于持有Spring的容器 -->
     <bean id="springContextHolder" class="com.attempt.core.common.SpringContextHolder"/>
+    
+    <!-- 对JVM字符集的检查 -->
+    <bean id="charsetCheckTask" class="com.attempt.core.init.CharsetCheckTask"/>
+    
     <!-- Fastjson对自定义序列化&反序列化实现的初始化任务 -->
     <bean id="fastjsonInitTask" class="com.attempt.core.fastjson.FastJsonInitTask"/>    
 </beans>
