@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <description>core</description>
+    <!-- 声明由Spring托管全部的属性文件 -->
+    <bean id="propertiesUtils" class="com.attempt.core.common.util.PropertiesUtils">
+    	<!-- 除了支持配置的properties文件外，还支持系统属性 -->
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <!-- 找不到，则忽略 -->
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath*:/coreconfig.properties</value>
+                <value>classpath*:/*.properties</value>
+                <value>/WEB-INF/classes/*.properties</value>
+            </list>
+        </property>
+    </bean>
+    <!--开启注解 -->
+    <context:component-scan base-package="com.*.*.service" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.beans.factory.annotation.Autowired"/>
+        <context:include-filter type="annotation" expression="javax.annotation.Resource"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:include-filter type="annotation" expression="org.springframework.context.annotation.Scope"/>
+    </context:component-scan>
+    <context:component-scan base-package="com.*.*.business" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.beans.factory.annotation.Autowired"/>
+        <context:include-filter type="annotation" expression="javax.annotation.Resource"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:include-filter type="annotation" expression="org.springframework.context.annotation.Scope"/>
+    </context:component-scan>
+    <context:component-scan base-package="com.*.*.dao" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.beans.factory.annotation.Autowired"/>
+        <context:include-filter type="annotation" expression="javax.annotation.Resource"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+    
+    <!-- 用于持有Spring的容器 -->
+    <bean id="springContextHolder" class="com.attempt.core.common.SpringContextHolder"/>
+    <!-- Fastjson对自定义序列化&反序列化实现的初始化任务 -->
+    <bean id="fastjsonInitTask" class="com.attempt.core.fastjson.FastJsonInitTask"/>    
+</beans>
