@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/cache
+       http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+    <description>cache</description>
+
+    <!--启动Spring的@Cacheable注解-->
+    <cache:annotation-driven cache-manager="springCacheManager" key-generator="springCacheKeyGenerator"/>
+    <bean id="springCacheKeyGenerator" class="com.attempt.core.cache.impl.SpringCacheKeyGenerator"/>
+    <bean id="springCacheManager" class="com.attempt.core.cache.impl.SpringCacheManager" depends-on="springContextHolder">
+        <property name="timeLimit" value="600000"/>
+    </bean>
+    <!--用于生成缓存元数据的工具类-->
+    <bean id="cacheMetaInfoFactory" class="com.attempt.core.cache.impl.CacheMetaInfoFactoryImpl"/>
+   
+    <!--Redis的池化通用配置-->
+    <bean id="redisDefaultPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${cache.redis.default.maxActive}"/>
+        <property name="maxIdle" value="${cache.redis.default.maxIdle}"/>
+        <property name="maxWaitMillis" value="${cache.redis.default.maxWait}"/>
+        <property name="testOnBorrow" value="${cache.redis.default.testOnBorrow}"/>
+    </bean>
+    
+    <!--Redis默认数据源的命令工具服务-->
+    <bean id="defaultCacheSource" class="com.attempt.core.cache.provider.RedisCommonderProvider">
+        <property name="poolConfig" ref="redisDefaultPoolConfig"/>
+        <property name="timeout" value="${cache.redis.default.timeout}"/>
+        <property name="addresses" value="${cache.redis.default.addresses}"/>
+        <property name="password" value="${cache.redis.default.password}"/>
+        <property name="redisMode" value="${cache.redis.default.mode}"/>
+        <property name="maxRedirections" value="${cache.redis.default.maxRedirections}"/>
+    </bean>
+    
+    <!--Redis服务-->
+    <bean id="redisCacheService" class="com.attempt.core.cache.impl.RedisCacheServiceImpl"/>
+
+    <!--缓存数据初始化自启动服务-->
+    <bean id="cacheInitTask" class="com.attempt.core.cache.init.CacheInitTask"/>
+    
+    
+     <!--缓存服务提供者-->
+    <bean id="cacheService" class="com.attempt.core.cache.provider.CacheServiceProvider"/>
+    
+    <!-- 动态缓存数据源路由 -->
+    <bean id="CacheSourceAdvice" class="com.attempt.core.cache.support.CacheSourceAdvice">
+        <property name="dynamic" value="${cache.dynamic}"/>
+    </bean>
+    
+    <!-- 对所有com.*.*.service.impl和com.*.*.web包内的方法做缓存数据源指定-->
+    <aop:config>
+        <aop:aspect id="cacheAspect" ref="CacheSourceAdvice" order="2">
+            <aop:pointcut id="cachePointcut"
+                          expression="(execution(* com.*.*.service.impl..*.*(..)) or execution(* com.*.*.web..*.*(..)))
+                          and @annotation(com.attempt.core.cache.annotation.CacheSource)"/>
+            <aop:before method="doBefore" pointcut-ref="cachePointcut"/>
+            <aop:after method="doAfter" pointcut-ref="cachePointcut"/>
+            <aop:after-throwing method="afterThrowing" pointcut-ref="cachePointcut" throwing="throwable"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

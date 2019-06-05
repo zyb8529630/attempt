@@ -121,12 +121,6 @@
             <artifactId>fastjson</artifactId>
             <version>${fastjson_verion}</version>
         </dependency>
-        <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
-            <version>${javax_rs_version}</version>
-            <scope>provided</scope>
-        </dependency>
         
   </dependencies>
 </project>

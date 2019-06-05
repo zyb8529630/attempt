@@ -41,19 +41,19 @@ public class FastJsonInitTask  extends InitializingTask {
 		
 	}
 
-	private void initFastJsonParsers(Map<String, FastJsonParser> beansOfType) {
+	public void initFastJsonParsers(Map<String, FastJsonParser> beansOfType) {
 		if (isInited)
         return;
 
-    // 如果map为空，则退出
-    if (MapUtils.isEmpty(beansOfType)) {
-        isInited = true;
-        return;
-    }
-    /**
-     * 遍历Map，并将序列化与反序列化实例注入到FastJson中
-     */
-    beansOfType.forEach((k, v) -> {
+	    // 如果map为空，则退出
+	    if (MapUtils.isEmpty(beansOfType)) {
+	        isInited = true;
+	        return;
+	    }
+	    /**
+	     * 遍历Map，并将序列化与反序列化实例注入到FastJson中
+	     */
+	    beansOfType.forEach((k, v) -> {
         /**
          * 将特定类型的序列化实例放入Fastjson中
          */
