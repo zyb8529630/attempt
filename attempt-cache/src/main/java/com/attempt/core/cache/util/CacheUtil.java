@@ -30,6 +30,11 @@ public interface CacheUtil {
      */
     String SPLITFLAG_PROPERTY = ".";
 
+    /**
+     * 哈希槽信号量在Redis中的key
+     */
+    String CLUSTER_SLOT_MUTEX_FLAG = "_REDIS_SLOT";
+    
 	/**
 	 * 生成合法的Redis的Key.
 	 * @param metaInfo
