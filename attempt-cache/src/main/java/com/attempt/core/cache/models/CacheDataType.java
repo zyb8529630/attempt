@@ -1,12 +1,10 @@
 package com.attempt.core.cache.models;
-/**
- * 缓存数据类型.
- * @author zhouyinbin
- * @date 2019年6月5日 下午5:37:47
- *
- */
+/**  
+* @Description: 缓存数据类型.
+* @author zhouyinbin  
+* @date 
+*/
 public enum CacheDataType {
-	
 	 /**
      * 信号量.
      */
@@ -55,4 +53,5 @@ public enum CacheDataType {
      * 快照.
      */
     SNAPSHOT;
+
 }

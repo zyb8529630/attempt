@@ -21,7 +21,26 @@ import java.util.UUID;
  */
 public interface CommonUtils {
 
-	
+	/**
+     * 日期格式yyyy-MM-dd HH:mm:ss,SSS
+     */
+    String YYYY_MM_DD_HH_MM_SS_SSS = "yyyy-MM-dd HH:mm:ss,SSS";
+
+    /**
+     * 日期格式yyyyMMddHHmmssSSS
+     */
+    String YYYYMMDD_HHMMSS_SSS = "yyyyMMddHHmmssSSS";
+
+    /**
+     * 日期格式yyyy-MM-dd HH:mm:ss.SSS
+     */
+    String YYYY_MM_DD_HH_MM_SS_FF = "yyyy-MM-dd HH:mm:ss.SSS";
+
+    /**
+     * 日期格式yyyy-MM-dd HH:mm:ss
+     */
+    String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
+    
 	/**
 	 * 生成UUID（全局唯一） 用于主键生成
 	 * @return uuid

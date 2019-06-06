@@ -2,14 +2,13 @@ package com.attempt.core.cache.models;
 
 import java.io.Serializable;
 
-/**
- *
- * @author zhouyinbin
- * @date 2019年6月5日 下午5:16:17
- *
- */
+/**  
+* @Description: 
+* @author zhouyinbin  
+* @date 
+* @version V1.0  
+*/
 public class CacheMetaInfo {
-	
     /**
      * 缓存数据名称.
      */
@@ -19,21 +18,19 @@ public class CacheMetaInfo {
      * 缓存数据拥有者名称.
      */
     private String owner;
-
     /**
      * 缓存数据类型.
      */
     private CacheDataType dataType;
 
     /**
-     * 当{@link CacheDataType}是容器级数据类型时，声明内部放置的数据类型
-     */
-    private Class<? extends Serializable> itemType;
-
-    /**
      * 缓存数据过期策略.
      */
     private ExpireConfig expireConfig;
+    /**
+     * 当{@link CacheDataType}是容器级数据类型时，声明内部放置的数据类型
+     */
+    private Class<? extends Serializable> itemType;
 
     /**
      * 缓存数据名称.
@@ -70,7 +67,6 @@ public class CacheMetaInfo {
     public void setOwner(String owner) {
         this.owner = owner;
     }
-
     /**
      * 缓存数据类型.
      *
@@ -90,12 +86,12 @@ public class CacheMetaInfo {
     }
 
     /**
-     * 当{@link CacheDataType}是容器级数据类型时，声明内部放置的数据类型
+     * 缓存数据过期策略.
      *
-     * @return the item type
+     * @return the expire config
      */
-    public Class<? extends Serializable> getItemType() {
-        return itemType;
+    public ExpireConfig getExpireConfig() {
+        return expireConfig;
     }
 
     /**
@@ -106,15 +102,15 @@ public class CacheMetaInfo {
     public void setItemType(Class<? extends Serializable> itemType) {
         this.itemType = itemType;
     }
-
     /**
-     * 缓存数据过期策略.
+     * 当{@link CacheDataType}是容器级数据类型时，声明内部放置的数据类型
      *
-     * @return the expire config
+     * @return the item type
      */
-    public ExpireConfig getExpireConfig() {
-        return expireConfig;
+    public Class<? extends Serializable> getItemType() {
+        return itemType;
     }
+
 
     /**
      * 缓存数据过期策略.
@@ -124,4 +120,5 @@ public class CacheMetaInfo {
     public void setExpireConfig(ExpireConfig expireConfig) {
         this.expireConfig = expireConfig;
     }
+
 }

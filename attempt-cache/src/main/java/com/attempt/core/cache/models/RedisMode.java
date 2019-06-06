@@ -1,15 +1,15 @@
 package com.attempt.core.cache.models;
-/**
- * Redis运行模式.
- * @author zhouyinbin
- * @date 2019年6月6日 下午1:54:40
- *
- */
+/**  
+* @Description: Redis运行模式.
+* @author zhouyinbin  
+* @date 
+* @version V1.0  
+*/
 public enum RedisMode {
-	
-	/**
-	 * 单例模式
-	 */
+
+    /**
+     * 单例模式.
+     */
     SINGLETON,
 
     /**
@@ -26,4 +26,5 @@ public enum RedisMode {
      * 分片模式.
      */
     SHAREED;
+	
 }
