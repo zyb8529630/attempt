@@ -24,6 +24,7 @@ public class QueueConnectionAdvice {
         if (annotation == null)
             return;
         QueueConnectionHolder.set(annotation.value());
+        
     }
 
     public void doAfter(JoinPoint joinPoint) {
