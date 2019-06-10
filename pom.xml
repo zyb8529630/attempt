@@ -41,6 +41,8 @@
         <jedis_version>2.9.0</jedis_version>
         <shiro_version>1.3.2</shiro_version>
         <rabbitmq_version>4.2.0</rabbitmq_version>
+        <mysql_driver_version>5.1.38</mysql_driver_version>
+        <druid_version>1.0.26</druid_version>
   </properties>
     <build>
         <plugins>
@@ -68,5 +70,6 @@
     	<module>attempt-common</module>
     	<module>attempt-cache</module>
     	<module>attempt-queue</module>
+    	<module>attempt-dao</module>
     </modules>
 </project>
