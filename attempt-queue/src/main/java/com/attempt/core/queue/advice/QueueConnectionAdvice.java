@@ -15,7 +15,7 @@ import com.attempt.core.queue.support.QueueConnectionHolder;
  *
  */
 public class QueueConnectionAdvice {
-	
+
     public void doBefore(JoinPoint joinPoint) throws Exception {
         // 获取方法签名
         Method declareMethod = ((MethodSignature) joinPoint.getSignature()).getMethod();
