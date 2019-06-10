@@ -12,6 +12,7 @@ public interface QueueWarpperBuilder {
 
 	/**
 	 * 创建warpper
+	 * 
 	 * @param queueName 标识的队列名称。如果为null则取默认值。
 	 * @return warpper实例
 	 */

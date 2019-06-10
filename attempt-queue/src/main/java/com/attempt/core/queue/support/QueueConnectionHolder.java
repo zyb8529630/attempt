@@ -8,6 +8,7 @@ package com.attempt.core.queue.support;
 public class QueueConnectionHolder {
 
 	
+	
 	  private QueueConnectionHolder() {
 	        // nothing todo 不允许实例化
 	    }

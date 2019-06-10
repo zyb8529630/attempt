@@ -62,7 +62,8 @@ public class RabbitWarpperBuilderImpl implements QueueWarpperBuilder {
 	 */
 	@Override
 	public QueueWarpper create(String queueName) {
-		QueueWarpper warpper = new QueueWarpper();
+		
+		QueueWarpper warpper = new QueueWarpper();		
         String prefix = "";
         if (!queueName.equals(QueueConnectionFactoryImpl.DEFAULT_MQ_FLAG))
             prefix = queueName + ".";

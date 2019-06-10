@@ -177,6 +177,7 @@ public class QueueConnectionFactoryImpl  implements QueueConnectionFactory, Init
      *
      * @throws Exception 创建连接失败，则抛出异常
      */
+    
     @Override
     public void afterPropertiesSet() throws Exception {
         String queueNameStr = PropertiesUtils.getProperty(QUEUE_LIST_FLAG);

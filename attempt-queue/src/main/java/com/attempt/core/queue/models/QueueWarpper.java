@@ -25,14 +25,17 @@ public class QueueWarpper {
      * RabbitMQ的连接构造工具
      */
     private ConnectionFactory connectionFactory;
+    
     /**
      * 生产者连接
      */
     private Connection producerConnection;
+    
     /**
      * 生产者连接是否可访问
      */
     private AtomicBoolean producerAccessable = new AtomicBoolean(true);
+    
     /**
      * 消费者连接
      */

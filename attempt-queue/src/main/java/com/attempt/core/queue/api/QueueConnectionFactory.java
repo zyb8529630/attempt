@@ -45,6 +45,7 @@ public interface QueueConnectionFactory {
      * 创建用于消息生产者的消息队列虚拟通道
      * 推荐每个线程保持独立Chanel实例
      *
+     *
      * @return {@link Channel}
      */
     Channel createProducerChannel();

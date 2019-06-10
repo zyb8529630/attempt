@@ -27,6 +27,7 @@ public class Message <T extends Serializable> implements Serializable {
      */
     private T messageBody;
     
+    
 	public String getMessageId() {
 		return messageId;
 	}
