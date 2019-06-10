@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.attempt</groupId>
+    <artifactId>attempt-core</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>attempt-queue</artifactId>
+  
+  <dependencies>
+  		<!--公共组件依赖-->
+        <dependency>
+            <groupId>com.attempt</groupId>
+            <artifactId>attempt-common</artifactId>
+            <version>${master_version}</version>
+        </dependency>
+        <!--消息队列依赖-->
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>${rabbitmq_version}</version>
+        </dependency>
+  </dependencies>
+  
+</project>

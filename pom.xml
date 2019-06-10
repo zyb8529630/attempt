@@ -40,6 +40,7 @@
         <fastjson_verion>1.2.34</fastjson_verion>
         <jedis_version>2.9.0</jedis_version>
         <shiro_version>1.3.2</shiro_version>
+        <rabbitmq_version>4.2.0</rabbitmq_version>
   </properties>
     <build>
         <plugins>
@@ -66,5 +67,6 @@
     <modules>
     	<module>attempt-common</module>
     	<module>attempt-cache</module>
+    	<module>attempt-queue</module>
     </modules>
 </project>
