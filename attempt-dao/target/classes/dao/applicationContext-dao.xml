@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd"
+       default-lazy-init="false">
+
+    <description>dao</description>
+
+    <!--数据源的日志-->
+    <bean id="druidLogger" class="com.alibaba.druid.filter.logging.Slf4jLogFilter">
+        <property name="connectionLogErrorEnabled" value="true"/>
+        <property name="statementLogErrorEnabled" value="true"/>
+        <property name="resultSetLogErrorEnabled" value="true"/>
+        <property name="connectionLogEnabled" value="${jdbc.debug.logging}"/>
+        <property name="resultSetLogEnabled" value="false"/>
+        <property name="statementLogEnabled" value="${jdbc.debug.logging}"/>
+        <property name="statementExecutableSqlLogEnable" value="${jdbc.debug.logging}"/>
+        <property name="connectionLoggerName" value="HALO_DAO"/>
+        <property name="statementLoggerName" value="HALO_DAO"/>
+        <property name="resultSetLoggerName" value="HALO_DAO"/>
+        <property name="dataSourceLoggerName" value="HALO_DAO"/>
+    </bean>
+
+    <!--统计监控信息-->
+    <bean id="druidStat" class="com.alibaba.druid.filter.stat.StatFilter">
+        <!--慢SQL记录-->
+        <property name="slowSqlMillis" value="5000"/>
+        <property name="logSlowSql" value="true"/>
+        <!--SQL合并统计配置-->
+        <property name="mergeSql" value="true"/>
+    </bean>
+    <!--SQL注入防火墙-->
+    <bean id="druidWall" class="com.alibaba.druid.wall.WallFilter"/>
+    <!--数据库密码加密工具-->
+    <bean id="encryptConfig" class="com.alibaba.druid.filter.config.ConfigFilter"/>
+
+    <!-- 默认库数据源配置 -->
+    <bean id="defaultDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close">
+        <property name="url" value="${jdbc.ds.default.url}"/>
+        <property name="username" value="${jdbc.ds.default.user}"/>
+        <property name="password" value="${jdbc.ds.default.password}"/>
+        <property name="initialSize" value="${jdbc.initConnectionCount}"/>
+        <property name="minIdle" value="${jdbc.minConnectionCount}"/>
+        <property name="maxActive" value="${jdbc.maxConnectionCount}"/>
+        <property name="maxWait" value="${jdbc.maxWait}"/>
+        <property name="testOnBorrow" value="${jdbc.testOnBorrow}"/>
+        <property name="validationQuery" value="${jdbc.validationQuery}"/>
+        <property name="poolPreparedStatements" value="${jdbc.poolPreparedStatements}"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize"
+                  value="${jdbc.maxPoolPreparedStatementPerConnectionSize}"/>
+        <property name="connectionProperties"
+                  value="config.decrypt=${jdbc.password.decrypt};config.decrypt.key=${jdbc.ds.default.password.publickey}"/>
+        <!--合并多个DruidDataSource的监控数据-->
+        <property name="useGlobalDataSourceStat" value="true"/>
+        <property name="proxyFilters">
+            <list>
+                <!--数据库日志记录-->
+                <ref bean="druidLogger"/>
+                <!--数据库监控-->
+                <ref bean="druidStat"/>
+                <!--SQL注入防火墙-->
+                <ref bean="druidWall"/>
+                <!--数据库密码加密工具-->
+                <ref bean="encryptConfig"/>
+            </list>
+        </property>
+    </bean>
+
+    <!--默认库的数据源配置, 代理至其他spring文件中配置-->
+    <!--<bean id="defaultDataSource" class="com.attempt.core.dao.support.DefaultDataSourceProvider" depends-on="springContextHolder"/>-->
+
+    <!-- 动态数据源配置 -->
+    <bean id="dynamicDataSource" class="com.attempt.core.dao.support.DynamicDataSource">
+        <property name="defaultTargetDataSource" ref="defaultDataSource"/>
+        <property name="dynamic" value="${jdbc.dynamic}"/>
+        <property name="dataSourceList" value="${jdbc.dynamic.list}"/>
+    </bean>
+
+    <!--druid的拦截监控-->
+    <bean id="druidStatMethodInterceptor"
+          class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor"/>
+
+    <!-- jdbc操作工具 -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dynamicDataSource"/>
+    </bean>
+
+    <!-- jdbc 数据插入操作工具 -->
+    <bean id="jdbcInsert" class="org.springframework.jdbc.core.simple.SimpleJdbcInsert" scope="prototype">
+        <constructor-arg>
+            <ref bean="dynamicDataSource"/>
+        </constructor-arg>
+    </bean>
+    <!-- jdbc 存储过程调用操作工具 -->
+    <bean id="jdbcCall" class="org.springframework.jdbc.core.simple.SimpleJdbcCall" scope="prototype">
+        <constructor-arg>
+            <ref bean="dynamicDataSource"/>
+        </constructor-arg>
+    </bean>
+
+    <!-- 动态数据库路由 -->
+    <bean id="dynDataSourceAdvice" class="com.attempt.core.dao.support.DynamicDataSourceAdvice">
+        <property name="dataSourceMappingSet">
+            <map>
+                <entry key="query" value="${jdbc.dynamic.interceptor.query}"/>
+                <entry key="update" value="${jdbc.dynamic.interceptor.update}"/>
+                <entry key="call" value="${jdbc.dynamic.interceptor.call}"/>
+                <entry key="batch" value="${jdbc.dynamic.interceptor.batch}"/>
+            </map>
+        </property>
+        <property name="dynamic" value="${jdbc.dynamic}"/>
+    </bean>
+
+    <!--配置事务-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dynamicDataSource"/>
+        <property name="defaultTimeout" value="${jdbc.transaction.timeout}"/>
+    </bean>
+
+    <!-- 根据方法名启动新事务-->
+    <tx:advice id="methodNameTxAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 根据类或方法上的注解启动新事务-->
+    <tx:advice id="methodAnnotationTxAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 对JdbcTemplate的方法做数据源指定-->
+    <aop:config>
+        <aop:aspect id="jdbcAspect" ref="dynDataSourceAdvice" order="1">
+            <aop:pointcut id="jdbcPointcut"
+                          expression="execution(* org.springframework.jdbc.core.JdbcTemplate.*(..))"/>
+            <aop:before method="beforeJdbcInvoke" pointcut-ref="jdbcPointcut"/>
+            <aop:after method="afterJdbcInvoke" pointcut-ref="jdbcPointcut"/>
+            <aop:after-throwing method="afterJdbcThrowing" pointcut-ref="jdbcPointcut" throwing="throwable"/>
+        </aop:aspect>
+    </aop:config>
+
+    <!-- 对所有com.*.*.service.impl包内的方法做数据源指定-->
+    <aop:config>
+        <aop:aspect id="serviceAspect" ref="dynDataSourceAdvice" order="1">
+            <aop:pointcut id="servicePointcut"
+                          expression="execution(* com.*.*.service.impl..*.*(..)) and @annotation(com.attempt.core.dao.annotation.DataSource)"/>
+            <aop:before method="beforeServiceInvoke" pointcut-ref="servicePointcut"/>
+            <aop:after method="afterServiceInvoke" pointcut-ref="servicePointcut"/>
+            <aop:after-throwing method="afterServiceThrowing" pointcut-ref="servicePointcut" throwing="throwable"/>
+        </aop:aspect>
+    </aop:config>
+
+    <!-- 对所有com.*.*.service.impl包内,包含@Transaction注解的类或方法做事务管理-->
+    <aop:config>
+        <aop:pointcut id="methodAnnotationTxPointcut"
+                      expression="execution(* com.*.*.service.impl..*.*(..))
+                       and @annotation(com.attempt.core.dao.annotation.Transaction)
+                        and !execution(* com.attempt.core..*.*(..))"/>
+        <aop:advisor advice-ref="methodAnnotationTxAdvice" pointcut-ref="methodAnnotationTxPointcut" order="15"/>
+    </aop:config>
+
+    <!-- 对所有com.*.*.service.impl包内,以tx方法名开头的方法做事务管理-->
+    <aop:config>
+        <aop:pointcut id="methodNameTxPointcut"
+                      expression="execution(* com.*.*.service.impl..*.tx*(..)) and !execution(* com.attempt.core..*.*(..))"/>
+        <aop:advisor advice-ref="methodNameTxAdvice" pointcut-ref="methodNameTxPointcut" order="20"/>
+    </aop:config>
+
+    <!-- 对所有从com.*.*.dao包内的方法进行拦截并做SQL监控-->
+    <aop:config>
+        <aop:pointcut id="druidPointcut"
+                      expression="execution(* com.*.*.dao..*.*(..)) and !execution(* com.attempt.core..*.*(..))"/>
+        <aop:advisor pointcut-ref="druidPointcut" advice-ref="druidStatMethodInterceptor" order="30"/>
+    </aop:config>
+</beans>
