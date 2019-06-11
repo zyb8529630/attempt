@@ -26,7 +26,7 @@ public interface QueueConnectionFactory {
      */
     Connection getProducerConnection(String queueName);
 
-    /**
+    /** 
      * 获取用于消息消费者的消息队列连接
      *
      * @return {@link Connection}

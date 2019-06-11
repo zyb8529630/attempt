@@ -42,7 +42,7 @@ public class QueueConnectionFactoryImpl  implements QueueConnectionFactory, Init
     private static final String QUEUE_TYPE_FLAG = "%squeue.type";
     /**
      * 消息队列的名称列表,多个以,分割
-     */
+     */ 
     private static final String QUEUE_LIST_FLAG = "queue.list";
 
     /**

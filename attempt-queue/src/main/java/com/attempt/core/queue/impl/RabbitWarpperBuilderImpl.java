@@ -36,7 +36,7 @@ public class RabbitWarpperBuilderImpl implements QueueWarpperBuilder {
      */
     private static final String QUEUE_VHOST_FLAG = "%squeue.vhost";
     /**
-     * 连接时的用户名
+     * 连接时的用户名 
      */
     private static final String QUEUE_USERNAME_FLAG = "%squeue.username";
     /**

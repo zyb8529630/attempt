@@ -20,7 +20,7 @@ public @interface DataSource {
      * {@code type}={@code ElementType.METHOD}：在DataSource的value查找数据源名称
      * <p>
      * {@code type}={@code ElementType.PARAMETER}：在DataSource指定的parameterIndex值，查询对应方法的参数值作为数据源名
-     *
+     * 
      * @return the element type
      */
     ElementType type() default ElementType.METHOD;
