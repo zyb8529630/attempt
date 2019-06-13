@@ -61,8 +61,7 @@ public class RabbitWarpperBuilderImpl implements QueueWarpperBuilder {
 	 * queueName 标识的队列名称。
 	 */
 	@Override
-	public QueueWarpper create(String queueName) {
-		
+	public QueueWarpper create(String queueName) {		
 		QueueWarpper warpper = new QueueWarpper();		
         String prefix = "";
         if (!queueName.equals(QueueConnectionFactoryImpl.DEFAULT_MQ_FLAG))

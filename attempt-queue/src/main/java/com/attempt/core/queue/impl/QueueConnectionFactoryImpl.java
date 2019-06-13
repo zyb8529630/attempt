@@ -58,7 +58,7 @@ public class QueueConnectionFactoryImpl  implements QueueConnectionFactory, Init
     @Override
     public Connection getProducerConnection() {
         String queueName = StringUtils.defaultIfEmpty(QueueConnectionHolder.get(), DEFAULT_MQ_FLAG);
-        return this.getProducerConnection(queueName);
+        return this.getProducerConnection(queueName);   
     }
 
     /**

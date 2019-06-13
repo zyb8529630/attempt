@@ -18,4 +18,3 @@ public interface QueueWarpperBuilder {
 	 */
 	 QueueWarpper create(String queueName);
 }
- 

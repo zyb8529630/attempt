@@ -85,7 +85,7 @@ public class QueueWarpper {
 	public void setConsumerAccessable(boolean accessable) {
 	        this.consumerAccessable.set(accessable);
 	 }
-       
+         
 	 /**
      * 关闭MQ的连接
      */

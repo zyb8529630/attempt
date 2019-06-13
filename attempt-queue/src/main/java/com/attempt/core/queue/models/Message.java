@@ -26,8 +26,7 @@ public class Message <T extends Serializable> implements Serializable {
      * 消息体
      */
     private T messageBody;
-    
-    
+      
 	public String getMessageId() {
 		return messageId;
 	}

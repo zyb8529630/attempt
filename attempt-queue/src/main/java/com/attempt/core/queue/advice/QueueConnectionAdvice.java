@@ -24,8 +24,7 @@ public class QueueConnectionAdvice {
         QueueSource annotation = AnnotationUtils.findAnnotation(instanceMethod, QueueSource.class);
         if (annotation == null)
             return;
-        QueueConnectionHolder.set(annotation.value());
-        
+        QueueConnectionHolder.set(annotation.value());        
     } 
 
     public void doAfter(JoinPoint joinPoint) {

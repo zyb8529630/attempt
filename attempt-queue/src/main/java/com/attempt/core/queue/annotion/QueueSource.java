@@ -17,6 +17,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface QueueSource {
 
-	String value();
-	
+	String value();	
 }
