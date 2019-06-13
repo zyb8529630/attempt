@@ -9,7 +9,7 @@ public enum XOR {
 	
 	/**
 	 * 并操作符.
-	 */
+	 */ 
 	AND,
 	
 

@@ -39,7 +39,7 @@ public class FastJsonInitTask  extends InitializingTask {
          */
         initFastJsonParsers(applicationContext.getBeansOfType(FastJsonParser.class));
 		
-	}
+	} 
 
 	public void initFastJsonParsers(Map<String, FastJsonParser> beansOfType) {
 		if (isInited)

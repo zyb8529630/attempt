@@ -12,7 +12,7 @@ public class ExpireConfig {
      * 当{@link #expireStrategy}={@link ExpireStrategy#EXPIRE_ON_TIME_LIMIT} 有效
      */
     private long timeLimit;
-
+ 
     /**
      * 读取次数.
      * <p>

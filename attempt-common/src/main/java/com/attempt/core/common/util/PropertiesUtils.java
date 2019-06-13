@@ -25,7 +25,7 @@ public class PropertiesUtils extends PropertyPlaceholderConfigurer {
 	 * 最终的全局Properties对象
 	 */
 	 private static Properties props;
-	 
+	  
 	 @Override
 	    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
 	        try {

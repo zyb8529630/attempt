@@ -8,7 +8,7 @@ package com.attempt.core.cache.models;
 public enum Behavior {
     /**
      * 获取.
-     */
+     */ 
     GET,
     /**
      * 设置或更新.

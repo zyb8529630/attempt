@@ -12,7 +12,7 @@ import com.attempt.core.common.XOR;
 * @author zhouyinbin  
 * @date 
 * @version V1.0  
-*/
+*/ 
 public interface TableOperations<T extends Serializable> {
 	 /**
      * 删除表格.

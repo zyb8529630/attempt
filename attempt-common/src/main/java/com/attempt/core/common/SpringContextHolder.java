@@ -12,7 +12,7 @@ import org.springframework.util.Assert;
  *
  */
 public class SpringContextHolder implements InitializingBean{
-	
+	 
 	/**
 	 * spring的上下文实例
 	 */

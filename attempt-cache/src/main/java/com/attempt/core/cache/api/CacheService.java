@@ -15,7 +15,7 @@ import com.attempt.core.cache.suppore.redis.holder.TableHolder;
 /**  
 * @Description: 缓存服务接口.
 * @author zhouyinbin  
-* @date 
+* @date  
 * @version V1.0  
 */
 public interface CacheService {

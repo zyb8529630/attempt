@@ -11,7 +11,7 @@ import java.util.List;
 public interface RankOperations<T extends Serializable> {
 	 /**
      * 删除列表.
-     */
+     */ 
     void delete();
 
     /**

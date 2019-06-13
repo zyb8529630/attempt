@@ -9,7 +9,7 @@ import com.attempt.core.cache.models.CacheMetaInfo;
 * @version V1.0  
 */
 public interface MetaInfoOperations {
-	  /**
+	  /** 
      * 删除{@link CacheMetaInfo}.
      */
     void delete();

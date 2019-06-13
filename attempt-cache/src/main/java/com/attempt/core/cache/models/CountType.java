@@ -10,7 +10,7 @@ public enum CountType {
      * 缓存续期计数.
      */
     RENEWAL_COUNT,
-    /**
+    /** 
      * 缓存写计数.
      */
     WRITE_COUNT,

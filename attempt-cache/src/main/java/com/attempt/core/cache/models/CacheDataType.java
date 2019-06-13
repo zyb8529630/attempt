@@ -8,7 +8,7 @@ public enum CacheDataType {
 	 /**
      * 信号量.
      */
-    MUTEX,
+    MUTEX, 
     /**
      * 会话.
      */

@@ -8,7 +8,7 @@ import com.attempt.core.cache.models.ExpireConfig;
 /**  
 * @Description: 为不同的数据类型生成{@link CacheMetaInfo}.
 * @author zhouyinbin  
-* @date 
+* @date  
 * @version V1.0  
 */
 public interface CacheMetaInfoFactory {

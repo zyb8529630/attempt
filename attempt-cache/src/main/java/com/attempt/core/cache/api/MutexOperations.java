@@ -8,7 +8,7 @@ package com.attempt.core.cache.api;
 public interface MutexOperations {
 	/**
     * 删除.
-    *
+    * 
     */
    void delete();
 

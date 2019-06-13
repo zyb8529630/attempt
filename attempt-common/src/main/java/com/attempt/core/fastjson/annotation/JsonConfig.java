@@ -21,7 +21,7 @@ public @interface JsonConfig {
      * @see com.alibaba.fastjson.serializer.SerializerFeature#WriteClassName
      */
     boolean writeType() default false;
-
+ 
     /**
      * 用于反序列化操作场景。
      * 当JSON文本中包含{@code '@type'}内容时，可以选择忽略自动类型匹配的功能。直接尝试去做字段级映射。

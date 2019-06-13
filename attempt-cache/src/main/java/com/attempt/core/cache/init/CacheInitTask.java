@@ -25,7 +25,7 @@ public class CacheInitTask  extends InitializingTask  {
 	 */
     private static final Logger logger = LoggerFactory.getLogger(CacheInitTask.class);
 	
-	/**
+	/** 
 	 * 作业执行
 	 */
 	@Override

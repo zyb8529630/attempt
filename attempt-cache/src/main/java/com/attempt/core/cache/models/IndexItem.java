@@ -14,7 +14,7 @@ public class IndexItem {
      */
     private String name;
     /**
-     * 索引值.
+     * 索引值. 
      */
     private String value;
 

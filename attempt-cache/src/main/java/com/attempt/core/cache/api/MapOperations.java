@@ -9,7 +9,7 @@ import java.util.Map;
 * @version V1.0  
 */
 public interface MapOperations <T extends Serializable> {
-	 /**
+	 /** 
      * 删除列表.
      */
     void delete();

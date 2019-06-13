@@ -17,7 +17,7 @@ public enum RedisMode {
      */
     SENTINEL,
 
-    /**
+    /** 
      * 集群模式.
      */
     CLUSTER,

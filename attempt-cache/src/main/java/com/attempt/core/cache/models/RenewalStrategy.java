@@ -16,7 +16,7 @@ public enum RenewalStrategy {
     RENEWAL_ON_GET,
 
     /**
-     * 每次更新数据,可进行续期.
+     * 每次更新数据,可进行续期. 
      */
     RENEWAL_ON_SET,
 

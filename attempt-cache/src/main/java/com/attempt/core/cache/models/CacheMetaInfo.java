@@ -9,7 +9,7 @@ import java.io.Serializable;
 * @version V1.0  
 */
 public class CacheMetaInfo {
-    /**
+    /** 
      * 缓存数据名称.
      */
     private String name;

@@ -10,7 +10,7 @@ import java.util.TreeMap;
 */
 public class ClusterSlot {
 	
-	/**
+	/** 
      * 在Redis中用来缓存哈希槽的的Key
      */
     private String slotCacheKey;

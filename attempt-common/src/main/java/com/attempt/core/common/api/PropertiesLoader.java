@@ -9,7 +9,7 @@ import java.util.Properties;
  *
  */
 public interface PropertiesLoader {
-
+ 
 	/**
 	 * 载入配置项信息，并放入prop中
 	 * @param props 待放入的Properties

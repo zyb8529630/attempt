@@ -6,7 +6,7 @@ import com.attempt.core.cache.models.CacheMetaInfo;
 * @Description: 针对某一块业务缓存数据的操作服务
 * @author zhouyinbin  
 * @date 
-* @version V1.0  
+* @version V1.0   
 */
 public interface CacheManageService {
 	/**

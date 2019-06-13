@@ -16,7 +16,7 @@ public enum ExpireStrategy {
     NO_EXPIRE,
     /**
      * 特定时间后，数据过期.
-     */
+     */ 
     EXPIRE_ON_TIME_LIMIT,
     /**
      * 读取指定次数后，数据过期.

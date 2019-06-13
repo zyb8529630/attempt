@@ -11,7 +11,7 @@ import org.apache.shiro.session.Session;
 public interface SessionOperations {
 	  /**
      * 删除{@link Session}.
-     *
+     * 
      */
     void delete();
 

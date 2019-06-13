@@ -20,7 +20,7 @@ import java.util.UUID;
  *
  */
 public interface CommonUtils {
-
+ 
 	
 	/**
      * 日期格式yyyy-MM-dd HH:mm:ss,SSS

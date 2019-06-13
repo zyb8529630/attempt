@@ -8,7 +8,7 @@ import java.util.List;
 * @date 
 * @version V1.0  
 */
-public interface ListOperations<T extends Serializable> {
+public interface ListOperations<T extends Serializable> { 
 
     /**
      * 删除列表.

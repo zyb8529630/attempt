@@ -13,7 +13,7 @@ public interface FastJsonParser {
 	
 	 /**
      * 可用于FastJson做序列化时的{@link ObjectSerializer}
-     *
+     * 
      */
     ObjectSerializer getSerializer();
 
