@@ -15,7 +15,7 @@ public interface RankOperations<T extends Serializable> {
     void delete();
 
     /**
-     * 特定的分值区间，获取区间内元素列表.
+     * 特定的分值区间，获取区间内元素列表.     
      *
      * @param fromScore 分值下限
      * @param toScore   分值上限

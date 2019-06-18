@@ -12,7 +12,7 @@ public class DynamicDataSourceHolder {
      */
 	
     private static final ThreadLocal<String> contextHolder = new ThreadLocal<>();
-
+        
     /**
      * 设置当前线程数据源类型.
      *

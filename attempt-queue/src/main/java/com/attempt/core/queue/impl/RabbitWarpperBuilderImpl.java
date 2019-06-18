@@ -56,7 +56,7 @@ public class RabbitWarpperBuilderImpl implements QueueWarpperBuilder {
      */
     private static final String QUEUE_HEARTBEAT_INTERVAL_FLAG = "%squeue.heartbeat.interval";
     
-	/**
+	/**      
 	 * 创建RabbitMQ的warpper实例
 	 * queueName 标识的队列名称。
 	 */

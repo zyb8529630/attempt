@@ -10,7 +10,7 @@ import com.attempt.core.cache.models.ExpireConfig;
 * @author zhouyinbin  
 * @date  
 * @version V1.0  
-*/
+*/        
 public interface CacheMetaInfoFactory {
 	/**
      * 生成{@link org.apache.shiro.session.Session}的{@link CacheMetaInfo}.

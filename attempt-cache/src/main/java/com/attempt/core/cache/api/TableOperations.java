@@ -18,7 +18,7 @@ public interface TableOperations<T extends Serializable> {
      * 删除表格.
      */
     void delete();
-
+        
 
     /**
      * 删除表格中特定的单元

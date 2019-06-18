@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  * @author zhouyinbin
  * @date 2019年6月6日 下午5:02:29
  *
- */
+ */       
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented 

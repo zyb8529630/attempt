@@ -6,7 +6,7 @@ package com.attempt.core.cache.api;
 * @version V1.0  
 */
 public interface Countable {
-	 /** 
+	 /**  
      * 缓存数据对象的续期次数.
      *
      * @return the long

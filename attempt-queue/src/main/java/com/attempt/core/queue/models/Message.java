@@ -17,7 +17,7 @@ public class Message <T extends Serializable> implements Serializable {
     /**
      * 交易码
      */
-    private String transactionCode;
+    private String transactionCode; 
     /**
      * 来源系统
      */

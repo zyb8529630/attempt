@@ -12,7 +12,7 @@ public interface MetaInfoOperations {
 	  /** 
      * 删除{@link CacheMetaInfo}.
      */
-    void delete();
+    void delete();       
 
     /**
      * 获取{@link CacheMetaInfo}.

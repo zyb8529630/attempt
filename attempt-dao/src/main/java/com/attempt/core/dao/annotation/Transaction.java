@@ -6,5 +6,5 @@ package com.attempt.core.dao.annotation;
  *
  */
 public @interface Transaction {
-
+          
 }

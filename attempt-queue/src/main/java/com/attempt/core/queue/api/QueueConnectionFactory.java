@@ -30,7 +30,7 @@ public interface QueueConnectionFactory {
      *
      * @return {@link Connection}
      */
-    Connection getConsumerConnection();
+    Connection getConsumerConnection(); 
 
     /**
      * 获取用于消息消费者的消息队列连接

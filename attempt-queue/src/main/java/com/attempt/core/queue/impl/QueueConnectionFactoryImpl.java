@@ -49,7 +49,7 @@ public class QueueConnectionFactoryImpl  implements QueueConnectionFactory, Init
      * 消息队列的warpper集合
      */
     private Map<String, QueueWarpper> warpperMap = new HashMap<>();
-    
+          
     /**
      * 获取用于消息发送者的消息队列连接
      *

@@ -96,7 +96,7 @@ public class DynamicDataSourceAdvice {
         DataSource methodAnnotation = AnnotationUtils.findAnnotation(instanceMethod, DataSource.class);
         if (methodAnnotation == null)
             return;        
-        /**
+        /**      
          * 如果数据库路由是静态方式，则直接填充值
          */
         if (methodAnnotation.type() == ElementType.METHOD)

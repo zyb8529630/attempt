@@ -9,7 +9,7 @@
 
     <description>messageQueue</description>
 
-    <!--用于管理消息队列连接的服务-->
+    <!--用于管理消息队列连接的服务-->      
     <bean id="queueConnectionFactory" class="com.attempt.core.queue.impl.QueueConnectionFactoryImpl"
           depends-on="springContextHolder"/>
 

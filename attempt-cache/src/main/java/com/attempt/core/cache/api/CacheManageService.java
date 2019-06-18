@@ -9,7 +9,7 @@ import com.attempt.core.cache.models.CacheMetaInfo;
 * @version V1.0   
 */
 public interface CacheManageService {
-	/**
+	/**       
      * 获取或构建待缓存元素的元数据。
      * 如果缓存数据需要通过多个元数据描述，则返回具有唯一性约束的元数据信息即可。
      *

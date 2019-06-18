@@ -12,7 +12,7 @@ public interface SessionOperations {
 	  /**
      * 删除{@link Session}.
      * 
-     */
+     */       
     void delete();
 
     /**

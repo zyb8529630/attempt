@@ -75,7 +75,7 @@ public class QueueWarpper {
 	}
 
 	public void setConsumerConnection(Connection consumerConnection) {
-		this.consumerConnection = consumerConnection;
+		this.consumerConnection = consumerConnection;     
 	}
 
 	public boolean getConsumerAccessable() {

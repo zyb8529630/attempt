@@ -19,7 +19,7 @@ import com.attempt.core.cache.suppore.redis.holder.TableHolder;
 * @version V1.0  
 */
 public interface CacheService {
-	   /**
+	   /** 
      * 验证指定的缓存资源是否存在.
      *
      * @param metaInfo 待查询的元数据，会忽略对 {@link CacheMetaInfo#expireConfig}的验证

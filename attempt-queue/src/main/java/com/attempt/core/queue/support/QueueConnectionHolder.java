@@ -11,7 +11,7 @@ public class QueueConnectionHolder {
 	
 	  private QueueConnectionHolder() {
 	        // nothing todo 不允许实例化
-	    }
+	    }        
 
 	    /**
 	     * ThradLocal的连接变量.

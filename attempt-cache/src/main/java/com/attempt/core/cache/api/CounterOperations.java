@@ -8,7 +8,7 @@ import com.attempt.core.cache.models.CountType;
 * @date 
 * @version V1.0  
 */
-public interface CounterOperations { 
+public interface CounterOperations {  
 	 /**
      * 获取值.
      *

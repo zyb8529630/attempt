@@ -13,7 +13,7 @@ import com.attempt.core.queue.support.QueueConnectionHolder;
  * @author zhouyinbin
  * @date 2019年6月10日 上午9:11:54
  *
- */
+ */     
 public class QueueConnectionAdvice {
 
     public void doBefore(JoinPoint joinPoint) throws Exception {

@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  * @date 2019年6月5日 下午1:52:05
  *
  */
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.RUNTIME)      
 @Target({ElementType.METHOD})
 public @interface CacheSource {
 

@@ -14,7 +14,7 @@ public interface MapOperations <T extends Serializable> {
      */
     void delete();
 
-    /**
+    /**     
      * 获取列表.
      */
     Map<String, T> get();

@@ -138,7 +138,7 @@
             <tx:method name="*" propagation="REQUIRED"/>
         </tx:attributes>
     </tx:advice>
-
+ 
     <!-- 对JdbcTemplate的方法做数据源指定-->
     <aop:config>
         <aop:aspect id="jdbcAspect" ref="dynDataSourceAdvice" order="1">
@@ -149,7 +149,7 @@
             <aop:after-throwing method="afterJdbcThrowing" pointcut-ref="jdbcPointcut" throwing="throwable"/>
         </aop:aspect>
     </aop:config>
-
+       
     <!-- 对所有com.*.*.service.impl包内的方法做数据源指定-->
     <aop:config>
         <aop:aspect id="serviceAspect" ref="dynDataSourceAdvice" order="1">
@@ -160,7 +160,7 @@
             <aop:after-throwing method="afterServiceThrowing" pointcut-ref="servicePointcut" throwing="throwable"/>
         </aop:aspect>
     </aop:config>
-
+              
     <!-- 对所有com.*.*.service.impl包内,包含@Transaction注解的类或方法做事务管理-->
     <aop:config>
         <aop:pointcut id="methodAnnotationTxPointcut"
