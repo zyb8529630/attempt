@@ -6,6 +6,7 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   
+  
   <artifactId>attempt-dao</artifactId>
   <name>com.attempt</name>
   <version>0.0.1-SNAPSHOT</version>

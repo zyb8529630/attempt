@@ -71,5 +71,6 @@
     	<module>attempt-cache</module>
     	<module>attempt-queue</module>
     	<module>attempt-dao</module>
+    	<module>attempt-dasc</module>
     </modules>
 </project>

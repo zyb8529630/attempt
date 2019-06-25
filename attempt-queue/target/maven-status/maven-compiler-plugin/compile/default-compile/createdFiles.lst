@@ -1,0 +1,11 @@
+com\attempt\core\queue\support\QueueConnectionHolder.class
+com\attempt\core\queue\impl\RabbitWarpperBuilderImpl$2.class
+com\attempt\core\queue\models\Message.class
+com\attempt\core\queue\impl\RabbitWarpperBuilderImpl.class
+com\attempt\core\queue\advice\QueueConnectionAdvice.class
+com\attempt\core\queue\impl\RabbitWarpperBuilderImpl$1.class
+com\attempt\core\queue\annotion\QueueSource.class
+com\attempt\core\queue\models\QueueWarpper.class
+com\attempt\core\queue\api\QueueWarpperBuilder.class
+com\attempt\core\queue\api\QueueConnectionFactory.class
+com\attempt\core\queue\impl\QueueConnectionFactoryImpl.class

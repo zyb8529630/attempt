@@ -1,0 +1,4 @@
+com\attempt\core\dao\annotation\Transaction.class
+com\attempt\core\dao\util\DynamicDataSourceHolder.class
+com\attempt\core\dao\support\DynamicDataSourceAdvice.class
+com\attempt\core\dao\annotation\DataSource.class
