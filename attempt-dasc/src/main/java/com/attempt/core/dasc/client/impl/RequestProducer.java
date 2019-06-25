@@ -7,4 +7,9 @@ package com.attempt.core.dasc.client.impl;
  */
 public class RequestProducer {
 
+	public void clearThreadValues() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
