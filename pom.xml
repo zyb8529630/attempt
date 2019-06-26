@@ -43,6 +43,10 @@
         <rabbitmq_version>4.2.0</rabbitmq_version>
         <mysql_driver_version>5.1.38</mysql_driver_version>
         <druid_version>1.0.26</druid_version>
+        <kafka_version>0.9.0.1</kafka_version>
+        <metrics_version>3.1.2</metrics_version>
+        <logback_version>1.1.7</logback_version>
+        <rxjava_version>1.2.0</rxjava_version>
   </properties>
     <build>
         <plugins>
@@ -72,5 +76,6 @@
     	<module>attempt-queue</module>
     	<module>attempt-dao</module>
     	<module>attempt-dasc</module>
+    	<module>attempt-log</module>
     </modules>
 </project>

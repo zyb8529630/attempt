@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <description>core</description>
+
+    <!-- 日志与监控相关 -->
+    <bean id="logDescParser" class="com.attempt.core.log.support.LogDescParser"/>
+
+    <bean id="serviceLogAdvice" class="com.attempt.core.log.support.ServiceLogAdvice"/>
+
+    <bean id="daoLogAdvice" class="com.attempt.core.log.support.DaoLogAdvice"/>
+
+    <bean id="metricRegistry" class="com.codahale.metrics.MetricRegistry"/>
+
+    <!-- 对所有从com.*.*.service 和 com.*.*.business包内的方法做日志记录-->
+    <aop:config>
+        <aop:aspect id="serviceLogAspect" ref="serviceLogAdvice" order="40">
+            <aop:pointcut id="serviceLogPointcut"
+                          expression="(execution(* com.*.*.service.impl..*.*(..)) or execution(* com.*.*.business..*.*(..)))
+                          and !execution(* com.attempt.core..*.*(..))"/>
+            <aop:before method="beforeInvoke" pointcut-ref="serviceLogPointcut"/>
+            <aop:after-returning method="afterInvoke" pointcut-ref="serviceLogPointcut" returning="result"/>
+            <aop:after-throwing method="afterThrowing" pointcut-ref="serviceLogPointcut" throwing="throwable"/>
+        </aop:aspect>
+    </aop:config>
+
+    <!-- 对所有从com.*.*.dao包内的方法做日志记录-->
+    <aop:config>
+        <aop:aspect id="daoLogAspect" ref="daoLogAdvice" order="40">
+            <aop:pointcut id="daoLogPointcut"
+                          expression="execution(* com.*.*.dao..*.*(..)) and !execution(* com.attempt.core..*.*(..))"/>
+            <aop:before method="beforeInvoke" pointcut-ref="daoLogPointcut"/>
+            <aop:after-returning method="afterInvoke" pointcut-ref="daoLogPointcut" returning="result"/>
+            <aop:after-throwing method="afterThrowing" pointcut-ref="daoLogPointcut" throwing="throwable"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

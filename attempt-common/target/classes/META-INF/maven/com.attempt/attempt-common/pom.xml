@@ -123,7 +123,14 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson_verion}</version>
-        </dependency>       
+        </dependency>    
+        
+         <!--响应式编程依赖-->
+        <dependency>
+            <groupId>io.reactivex</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>${rxjava_version}</version>
+        </dependency>   
   </dependencies>
    <build>
         <plugins>
